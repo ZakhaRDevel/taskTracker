@@ -1,0 +1,227 @@
+@import 'mixins';
+@import 'variables';
+
+* {
+  box-sizing: border-box;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  --mat-dialog-transition-duration: 0ms !important;
+
+  ::-moz-focus-outer,
+  ::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-family: var(--font-family-primary);
+  color: var(--font-color-default);
+  font-size: var(--font-size-base);
+  font-weight:var(--font-weight-base);
+  line-height:var(--line-height-base);
+  transition: opacity 2.5s;
+  visibility: visible;
+  opacity: 1;
+  background: #fff;
+}
+
+a {
+  color: var(--font-color-default);
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h5,
+h6 {
+  font-family: var(--font-family-primary);
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 72px;
+  line-height: 72px;
+
+  @media only screen and (max-width: $tablet) {
+    font-size: 51px;
+    line-height: 51px;
+  }
+
+  @media only screen and (max-width: $tiny) {
+    font-size: 26px;
+    line-height: 30px;
+  }
+}
+
+h2 {
+  font-size: 56px;
+  line-height: 64px;
+
+  @media only screen and (max-width: $tablet) {
+    font-size: 44px;
+    line-height: 50px;
+  }
+
+  @media only screen and (max-width: $tiny) {
+    font-size: 20px;
+    line-height: 24px;
+  }
+}
+
+h3 {
+  font-size: 48px;
+  line-height: 55px;
+
+  @media only screen and (max-width: $tablet) {
+    font-size: 34px;
+    line-height: 40px;
+  }
+
+  @media only screen and (max-width: $tiny) {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+
+h4 {
+  font-size: 40px;
+  line-height: 48px;
+
+  @media only screen and (max-width: $tablet) {
+    font-size: 32px;
+    line-height: 38px;
+  }
+
+  @media only screen and (max-width: $tiny) {
+    font-size: 16px;
+    line-height: 18px;
+  }
+
+}
+
+h5 {
+  font-size: 32px;
+  line-height: 34px;
+
+  @media only screen and (max-width: $tablet) {
+    font-size: 23px;
+    line-height: 25px;
+  }
+
+  @media only screen and (max-width: $tiny) {
+    font-size: 13px;
+    line-height: 15px;
+  }
+}
+
+h6 {
+  font-size: 28px;
+  line-height: 30px;
+
+  @media only screen and (max-width: $tablet) {
+    font-size: 23px;
+    line-height: 25px;
+  }
+
+  @media only screen and (max-width: $tiny) {
+    font-size: 11px;
+    line-height: 14px;
+  }
+}
+
+ul {
+  margin: 0;
+  padding: 0 0 0 25px;
+  list-style: disc;
+  white-space: normal;
+}
+
+p {
+  margin: 0;
+}
+
+blockquote {
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+}
+
+button {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+input,
+textarea,
+select,
+button {
+  font-family: var(--font-family-primary);
+  color: var(--font-color-default);
+}
+
+input[autocomplete='off']::-webkit-contacts-auto-fill-button {
+  visibility: hidden;
+  display: none !important;
+  pointer-events: none;
+  height: 0;
+  width: 0;
+  margin: 0;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+input {
+  -webkit-padding-start: 0;
+
+  &::-webkit-credentials-auto-fill-button {
+    position: absolute;
+    right: 0;
+    top: 30%;
+  }
+}
+
+input[type='text'] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+}
+
+input[type='password'] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+}
+
+input,
+ng-select {
+  &::-webkit-search-decoration {
+    -webkit-appearance: none;
+  }
+}

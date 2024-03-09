@@ -1,0 +1,18 @@
+:root {
+  --black: #000000;
+  --white: #ffffff;
+  --font-color-default: var(--black);
+  --font-family-primary: 'Segoe UI', sans-sarif;
+  --font-size-base: 14px;
+  --line-height-base: 22px;
+  --font-weight-base: 400;
+}
+
+//breakpoints
+$tiny: 480px;
+$small: 768px;
+$tablet: 1024px;
+$medium: 1280px;
+$large: 1441px;
+$m-large: 1850px;
+$x-large: 2560px;
