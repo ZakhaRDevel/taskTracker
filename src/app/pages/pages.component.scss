@@ -1,0 +1,12 @@
+.pages {
+  &__wrapper {
+    display: flex;
+    height: 100svh;
+  }
+
+  &__content {
+    flex: 1;
+    overflow-y: auto;
+    max-height:calc(100vh - 50px);
+  }
+}
