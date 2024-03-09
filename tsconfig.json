@@ -25,17 +25,6 @@
       "dom"
     ]
   },
-  "paths": {
-    "@environments/*": [
-      "./src/environments/*"
-    ],
-    "@app/*": [
-      "./src/app/*"
-    ],
-    "@assets/*": [
-      "./src/assets/*"
-    ]
-  },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
