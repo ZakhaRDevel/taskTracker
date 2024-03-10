@@ -2,5 +2,7 @@
 
 .header {
   height: 50px;
-  background-color: aquamarine;
+  background-color: var(--dark-gray);
+  border-bottom: 1px solid var(--light-gray);
+  border-top: 1px solid var(--light-gray);
 }

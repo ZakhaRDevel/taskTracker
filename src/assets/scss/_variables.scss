@@ -1,7 +1,10 @@
 :root {
   --black: #000000;
   --white: #ffffff;
-  --font-color-default: var(--black);
+  --dark-gray: #2E2E30;
+  --light-gray: #424244;
+  --bg: linear-gradient(90deg, rgba(30,31,33,1) 0%, rgba(61,62,64,1) 100%);
+  --font-color-default: var(--white);
   --font-family-primary: 'Segoe UI', sans-sarif;
   --font-size-base: 14px;
   --line-height-base: 22px;
