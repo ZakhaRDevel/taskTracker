@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { CreateTaskModalComponent } from '../../modals/create-task-modal/create-task-modal.component';
 
 @Component({
   selector: 'app-header',
@@ -8,5 +10,9 @@ import { Component } from '@angular/core';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
+  private matDialog = inject(MatDialog);
 
+  openCreateTaskDialog() {
+    this.matDialog.open(CreateTaskModalComponent);
+  }
 }
