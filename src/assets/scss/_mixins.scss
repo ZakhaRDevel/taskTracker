@@ -1,6 +1,20 @@
 @import 'variables';
 
-// @mixin example($var1: 34px, $var2: $accent) {
-//     color: $var2;
-//     font-size: $var1;
-// }
+@mixin customScrollGray() {
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--dark-gray);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--light-gray);
+    border-radius: 24px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--light-gray);
+  }
+}

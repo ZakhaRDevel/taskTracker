@@ -1,4 +1,5 @@
 @import "variables";
+@import "mixins";
 
 .pages {
   background-image: var(--bg);
@@ -12,5 +13,6 @@
     flex: 1;
     overflow-y: auto;
     max-height:calc(100svh - 50px);
+    @include customScrollGray
   }
 }
