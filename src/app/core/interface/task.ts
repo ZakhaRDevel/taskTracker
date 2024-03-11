@@ -9,5 +9,5 @@ export interface ITask {
   deadline?: Date;
   priority: TaskPriority;
   status: TaskStatus;
-  assignees: IUser[];
+  assignees?: IUser[];
 }

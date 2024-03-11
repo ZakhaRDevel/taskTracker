@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import { ITask } from '../interface/task';
+import { TaskPriority } from '../enum/task-priority';
 
 @Injectable({
   providedIn: 'root'
@@ -28,9 +29,13 @@ export class TaskService {
     return of(task).pipe(delay(200));
   }
 
-  createTask(task: Omit<ITask, 'id'>): Observable<ITask> {
+  createTask(taskData: Omit<ITask, 'id'>): Observable<ITask> {
     const tasks = this.getTasks();
-    const newTask = { ...task, id: this.generateId() }; // Добавление id к задаче
+    const newTask: ITask = {
+      ...taskData,
+      id: this.generateId(),
+      priority: taskData.priority || TaskPriority.Medium
+    };
     tasks.push(newTask);
     this.saveTasks(tasks);
     return of(newTask).pipe(delay(200));
