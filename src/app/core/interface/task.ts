@@ -1,10 +1,13 @@
 import { IUser } from './user';
+import { TaskStatus } from '../enum/task-status';
+import { TaskPriority } from '../enum/task-priority';
 
 export interface ITask {
-    title: string,
-    name: string,
-    deadline: string,
-    priority: string,
-    status: string,
-    performers: IUser[]
+  id: string;
+  title: string;
+  description?: string;
+  deadline?: Date;
+  priority: TaskPriority;
+  status: TaskStatus;
+  assignees: IUser[];
 }
