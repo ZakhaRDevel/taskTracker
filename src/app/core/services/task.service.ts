@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import { ITask } from '../interface/task';
 import { TaskPriority } from '../enum/task-priority';
+import { TaskStatus } from '../enum/task-status';
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +35,8 @@ export class TaskService {
     const newTask: ITask = {
       ...taskData,
       id: this.generateId(),
-      priority: taskData.priority || TaskPriority.Medium
+      priority: taskData.priority || TaskPriority.Medium,
+      status: TaskStatus.ToDo
     };
     tasks.push(newTask);
     this.saveTasks(tasks);
