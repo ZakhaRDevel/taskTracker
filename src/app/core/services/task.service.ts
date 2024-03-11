@@ -7,6 +7,9 @@ import { ITask } from '../interface/task';
   providedIn: 'root'
 })
 export class TaskService {
+  generateId(): string {
+    return new Date().getTime().toString();
+  }
   private getTasks(): ITask[] {
     const tasks = localStorage.getItem('tasks');
     return tasks ? JSON.parse(tasks) : [];
@@ -25,11 +28,12 @@ export class TaskService {
     return of(task).pipe(delay(200));
   }
 
-  createTask(task: ITask): Observable<ITask> {
+  createTask(task: Omit<ITask, 'id'>): Observable<ITask> {
     const tasks = this.getTasks();
-    tasks.push(task);
+    const newTask = { ...task, id: this.generateId() }; // Добавление id к задаче
+    tasks.push(newTask);
     this.saveTasks(tasks);
-    return of(task).pipe(delay(200));
+    return of(newTask).pipe(delay(200));
   }
 
   updateTask(updatedTask: ITask): Observable<ITask> {
