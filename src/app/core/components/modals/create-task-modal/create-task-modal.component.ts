@@ -13,6 +13,7 @@ import { AssigneeService } from '../../../services/assignee.service';
 import { IAssignee } from '../../../interface/assignee';
 import { TaskStatus } from '../../../enum/task-status';
 import { DatepickerComponent } from '../../inputs/datepicker/datepicker.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-task-modal',
@@ -30,6 +31,7 @@ import { DatepickerComponent } from '../../inputs/datepicker/datepicker.componen
 export class CreateTaskModalComponent extends Form implements OnInit {
   private dialogRef = inject(MatDialogRef<CreateTaskModalComponent>);
   private fb = inject(FormBuilder);
+  private router = inject(Router);
   private taskService = inject(TaskService);
   taskPriorities = Object.values(TaskPriority).map(priority => ({ label: priority, value: priority }));
   taskStatus = Object.values(TaskStatus).map(status => ({ label: status, value: status }));
@@ -60,6 +62,7 @@ export class CreateTaskModalComponent extends Form implements OnInit {
   override onRequestSuccess(value: ITask) {
     super.onRequestSuccess(value);
     this.closeModal();
+    this.router.navigateByUrl('');
   }
 
   closeModal() {
