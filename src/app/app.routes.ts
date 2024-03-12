@@ -1,7 +1,9 @@
 import { Routes } from '@angular/router';
 import { PagesComponent } from './pages/pages.component';
 import { TasksComponent } from './pages/tasks/tasks.component';
-import { taskResolver } from './core/task.resolver';
+import { tasksResolver } from './core/resolvers/tasks.resolver';
+import { TaskComponent } from './pages/task/task.component';
+import { taskResolver } from './core/resolvers/task.resolver';
 
 export const routes: Routes = [
   {
@@ -12,7 +14,14 @@ export const routes: Routes = [
         path:'',
         component: TasksComponent,
         resolve: {
-          tasks: taskResolver
+          tasks: tasksResolver
+        }
+      },
+      {
+        path: 'tasks/:id',
+        component: TaskComponent,
+        resolve: {
+          task: taskResolver
         }
       }
     ]

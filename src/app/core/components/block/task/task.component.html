@@ -20,4 +20,5 @@
     </div>
   </div>
   <button (click)="deleteTask(task.id)">Удалить</button>
+  <a [routerLink]="'tasks/'+ task.id">Подробнее</a>
 </div>

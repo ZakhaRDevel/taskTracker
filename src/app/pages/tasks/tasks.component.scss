@@ -1,7 +1,5 @@
-.home {
-  padding: 30px;
-
-  &__tasks {
+.tasks {
+  &__list {
     display: flex;
     flex-direction: column;
     gap: 10px;
