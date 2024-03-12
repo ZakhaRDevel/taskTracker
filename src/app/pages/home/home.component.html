@@ -2,6 +2,8 @@
   <div class="home__tasks">
     @for (task of tasks; track task.id) {
       <app-task [task]="task" />
+    } @empty {
+      У вас пока нет задач
     }
   </div>
 </div>
