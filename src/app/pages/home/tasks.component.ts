@@ -6,15 +6,15 @@ import { TaskService } from '../../core/services/task.service';
 import { merge, of, switchMap } from 'rxjs';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-tasks',
   standalone: true,
   imports: [
     TaskComponent
   ],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  templateUrl: './tasks.component.html',
+  styleUrl: './tasks.component.scss'
 })
-export class HomeComponent implements OnInit {
+export class TasksComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private taskService = inject(TaskService);
   tasks: ITask[];

@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { PagesComponent } from './pages/pages.component';
-import { HomeComponent } from './pages/home/home.component';
+import { TasksComponent } from './pages/home/tasks.component';
 import { taskResolver } from './core/task.resolver';
 
 export const routes: Routes = [
@@ -10,7 +10,7 @@ export const routes: Routes = [
     children: [
       {
         path:'',
-        component:HomeComponent,
+        component: TasksComponent,
         resolve: {
           tasks: taskResolver
         }
