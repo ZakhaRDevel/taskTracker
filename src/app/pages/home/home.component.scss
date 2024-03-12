@@ -1,5 +1,12 @@
 .home {
-  &__inner {
-    height: 2000px;
+  padding: 30px;
+
+  &__tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 30px;
+    border-radius: 15px;
+    background-color: var(--light-gray);
   }
 }

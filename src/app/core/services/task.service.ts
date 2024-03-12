@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import { ITask } from '../interface/task';
 import { TaskPriority } from '../enum/task-priority';
@@ -9,6 +9,16 @@ import { TaskStatus } from '../enum/task-status';
   providedIn: 'root'
 })
 export class TaskService {
+
+  private taskListUpdated = new BehaviorSubject<boolean>(false);
+
+  notifyTaskListUpdated() {
+    this.taskListUpdated.next(true);
+  }
+
+  getTaskListUpdateListener(): Observable<boolean> {
+    return this.taskListUpdated.asObservable();
+  }
   generateId(): string {
     return new Date().getTime().toString();
   }
@@ -40,6 +50,7 @@ export class TaskService {
     };
     tasks.push(newTask);
     this.saveTasks(tasks);
+    this.notifyTaskListUpdated();
     return of(newTask).pipe(delay(200));
   }
 
@@ -50,6 +61,7 @@ export class TaskService {
       tasks[index] = updatedTask;
       this.saveTasks(tasks);
     }
+    this.notifyTaskListUpdated();
     return of(updatedTask).pipe(delay(200));
   }
 
@@ -57,6 +69,7 @@ export class TaskService {
     let tasks = this.getTasks();
     tasks = tasks.filter(t => t.id !== id);
     this.saveTasks(tasks);
+    this.notifyTaskListUpdated();
     return of({}).pipe(delay(200));
   }
 }

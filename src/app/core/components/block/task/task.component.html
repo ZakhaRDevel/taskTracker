@@ -1,0 +1,23 @@
+<div class="task">
+  <div class="task__wrapper">
+    <span class="label">Название:</span>
+    <span>{{ task.title }}</span>
+  </div>
+  @if (task.description) {
+    <div class="task__wrapper">
+      <span class="label">Описание:</span>
+      <span>{{ task.description }}</span>
+    </div>
+  }
+  <div class="task__wrapper">
+    <span class="label">Исполнители:</span>
+    @for (assignee of task.assignees; track assignee) {
+      {{ assignee }}
+    } @empty {
+      нет исполнителей
+    }
+  </div>
+
+
+
+</div>

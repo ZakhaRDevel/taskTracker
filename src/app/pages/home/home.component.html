@@ -1,5 +1,7 @@
 <div class="home">
-  <div class="home__inner">
-    home
+  <div class="home__tasks">
+    @for (task of tasks; track task.id) {
+      <app-task [task]="task" />
+    }
   </div>
 </div>

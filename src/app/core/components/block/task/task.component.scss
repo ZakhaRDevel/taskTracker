@@ -1,0 +1,17 @@
+@import "variables";
+
+.task {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  flex-direction: column;
+  width: 100%;
+  border: 1px solid var(--dark-gray);
+  border-radius: 15px;
+  padding: 10px;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+}
