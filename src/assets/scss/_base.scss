@@ -26,8 +26,7 @@ body {
   transition: opacity 2.5s;
   visibility: visible;
   opacity: 1;
-  background: #fff;
-  overflow: hidden;
+  background: var(--dark-gray);
 }
 
 a {
