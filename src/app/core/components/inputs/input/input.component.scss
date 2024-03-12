@@ -1,0 +1,89 @@
+@import "variables";
+
+ .control-input {
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  width: 100%;
+  box-shadow: none;
+  appearance: none;
+  transition: border-color .3s;
+  color: var(--white);
+  position: relative;
+  z-index: 1;
+  background: var(--dark-gray);
+  font-size: 15px;
+  line-height: 20px;
+
+  &.disabled {
+    cursor: no-drop;
+  }
+
+  @media only screen and (max-width: $tablet) {
+    padding: 20px;
+  }
+
+  @media (hover: hover) {
+    //&:hover {
+    //  border-color: rgba(142, 106, 247, 0.40);
+    //}
+  }
+
+  &:focus {
+    //border-color: $accent;
+    //box-shadow: 0 0 2px 0 rgba(142, 106, 247, 1);
+  }
+
+  &[type='password'] {
+    font-size: 20px;
+  }
+
+  &.password {
+    padding-right: 56px;
+  }
+
+  &.error {
+    border-color: var(--red);
+  }
+
+  &:-webkit-autofill {
+    & ~ .placeholder {
+      color: transparent;
+    }
+  }
+
+  &:-webkit-autofill:hover,
+  :-webkit-autofill:focus {
+    & ~ .placeholder {
+      color: transparent;
+    }
+  }
+
+}
+
+textarea {
+  resize: none;
+  min-height: 104px;
+}
+
+.eye {
+  position: absolute;
+  right: 20px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 2;
+  color: #141414;
+
+  display: flex;
+  height: 22px;
+  cursor: pointer;
+
+  @media (hover: hover) {
+    &:hover {
+      & ~ input {
+        border-color: rgba(142, 106, 247, 0.40);
+      }
+    }
+  }
+}

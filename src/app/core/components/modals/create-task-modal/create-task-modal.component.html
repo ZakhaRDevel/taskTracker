@@ -2,4 +2,17 @@
   (closeModal)="closeModal()"
   [title]="'Новая задача'"
 >
+  <div class="create-task-modal">
+    <form class="create-task-modal__form" [formGroup]="formGroup">
+      <div class="wrapper">
+        <app-input [control]="control('title')" placeholder="название" />
+        <app-input [type]="'textarea'" [control]="control('description')" placeholder="описание" />
+        <app-input-select [bindLabel]="'label'" [bindValue]="'value'" [items]="taskPriorities"
+                          [control]="control('priority')" placeholder="приоритет" />
+        <app-input-select [items]="assignees" [bindLabel]="'name'" [bindValue]="'name'" [control]="control('assignees')"
+                          [multiple]="true" placeholder="исполнители"/>
+      </div>
+      <button type="submit" (click)="submit()">Создать задачу</button>
+    </form>
+  </div>
 </app-modal-layout>

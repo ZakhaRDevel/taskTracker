@@ -1,6 +1,8 @@
 @import "variables";
 
 .modal {
+  display: flex;
+  flex-direction: column;
   background-color: var(--light-gray);
   padding: 20px;
   max-width: 100%;
@@ -29,9 +31,13 @@
   }
 
   &__content {
+    flex: 1;
     padding-top: 20px;
 
     .mat-mdc-dialog-content {
+      height: 100%;
+      padding: 0;
+      max-height: 100%;
     }
   }
 }

@@ -1,0 +1,22 @@
+<div class="form-input" [ngClass]="variant">
+  @if (title) {
+    <div class="form-input__header">
+      <div class="form-input__title" [innerHTML]="title"></div>
+    </div>
+  }
+  <div class="form-input__wrapper">
+    <ng-content></ng-content>
+
+    @if (!control.value) {
+      <span class="placeholder" [innerHTML]="placeholder"></span>
+    }
+  </div>
+
+  @if (errors.length && showErrors) {
+    <div class="errors" [ngClass]="typeError">
+      <div class="error">
+        {{ errors[0] | errorReplace }}
+      </div>
+    </div>
+  }
+</div>

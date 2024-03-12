@@ -1,20 +1,65 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ModalLayoutComponent } from '../modal-layout/modal-layout.component';
-;
+import { Form } from '../../../abstract/form.abstract';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { InputComponent } from '../../inputs/input/input.component';
+import { TaskService } from '../../../services/task.service';
+import { ITask } from '../../../interface/task';
+import { InputSelectComponent } from '../../inputs/input-select/input-select.component';
+import { TaskPriority } from '../../../enum/task-priority';
+import { AssigneeService } from '../../../services/assignee.service';
+import { IAssignee } from '../../../interface/assignee';
 
 @Component({
   selector: 'app-create-task-modal',
   standalone: true,
   imports: [
     ModalLayoutComponent,
+    ReactiveFormsModule,
+    InputComponent,
+    InputSelectComponent
   ],
   templateUrl: './create-task-modal.component.html',
   styleUrl: './create-task-modal.component.scss'
 })
-export class CreateTaskModalComponent {
+export class CreateTaskModalComponent extends Form implements OnInit {
   private dialogRef = inject(MatDialogRef<CreateTaskModalComponent>);
+  private fb = inject(FormBuilder);
+  private taskService = inject(TaskService);
+  taskPriorities = Object.values(TaskPriority).map(priority => ({ label: priority, value: priority }));
+  private assigneeService = inject(AssigneeService);
+  assignees: IAssignee[];
+
+  formGroup: FormGroup = this.fb.group({
+    title: this.fb.control(null, [Validators.required]),
+    description: this.fb.control(null),
+    priority: this.fb.control(null),
+    assignees: this.fb.control([])
+  });
+
+  ngOnInit(): void {
+    this.assigneeService.getAssignees().subscribe((assignees)=> {
+      this.assignees = assignees
+      console.log(assignees);
+    })
+  }
+
+  prepareRequest(): Observable<ITask> {
+    const data = this.formGroup.getRawValue();
+    console.log(data);
+    return this.taskService.createTask(data);
+  }
+
+  override onRequestSuccess(value: ITask) {
+    super.onRequestSuccess(value);
+    this.closeModal();
+  }
+
   closeModal() {
     this.dialogRef.close();
   }
+
+
 }

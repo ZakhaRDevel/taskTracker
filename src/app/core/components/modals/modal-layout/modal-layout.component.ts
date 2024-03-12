@@ -13,10 +13,11 @@ import { NgStyle } from '@angular/common';
     CloseIconComponent,
     NgStyle
   ],
-  standalone: true
+  standalone: true,
 })
 export class ModalLayoutComponent {
   @Input() title: string = '';
-  @Input() width: string = '400px'
+  @Input() width: string = '600px'
+  @Input() height: string = '90svh'
   @Output() closeModal = new EventEmitter();
 }

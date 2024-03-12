@@ -1,0 +1,28 @@
+<div class="input-select">
+  <app-form-control
+    [control]="control"
+    [withError]="withError"
+    [title]="title"
+    [showErrors]="showError"
+  >
+    <ng-select
+      #select
+      [items]="items"
+      [searchable]="false"
+      [clearable]="false"
+      [disabled]="disabled"
+      [readonly]="readonly"
+      dropdownPosition="bottom"
+      [formControl]="control"
+      [placeholder]="placeholder"
+      [bindValue]="bindValue"
+      [bindLabel]="bindLabel"
+      [class.error]="withError || errors.length"
+      (change)='onSelect($event)'
+      [searchFn]="customSearchFn"
+      [class.isSearch]="searchable"
+      [multiple]="multiple"
+    >
+    </ng-select>
+  </app-form-control>
+</div>
