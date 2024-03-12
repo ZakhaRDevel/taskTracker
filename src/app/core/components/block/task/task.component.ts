@@ -2,12 +2,14 @@ import { Component, inject, Input } from '@angular/core';
 import { ITask } from '../../../interface/task';
 import { TaskService } from '../../../services/task.service';
 import { RouterLink } from '@angular/router';
+import { CloseIconComponent } from '../../svg/close-icon/close-icon.component';
 
 @Component({
   selector: 'app-task',
   standalone: true,
   imports: [
-    RouterLink
+    RouterLink,
+    CloseIconComponent
   ],
   templateUrl: './task.component.html',
   styleUrl: './task.component.scss'

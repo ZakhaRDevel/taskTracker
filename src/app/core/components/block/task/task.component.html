@@ -19,6 +19,8 @@
       }
     </div>
   </div>
-  <button (click)="deleteTask(task.id)">Удалить</button>
-  <a [routerLink]="'tasks/'+ task.id">Подробнее</a>
+  <button class="delete" (click)="deleteTask(task.id)">
+    <app-close-icon [width]="15" [height]="15" />
+  </button>
+  <a class="more-link" [routerLink]="'tasks/'+ task.id">Подробнее</a>
 </div>
