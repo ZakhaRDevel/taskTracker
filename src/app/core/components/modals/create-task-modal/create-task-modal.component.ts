@@ -11,6 +11,8 @@ import { InputSelectComponent } from '../../inputs/input-select/input-select.com
 import { TaskPriority } from '../../../enum/task-priority';
 import { AssigneeService } from '../../../services/assignee.service';
 import { IAssignee } from '../../../interface/assignee';
+import { TaskStatus } from '../../../enum/task-status';
+import { DatepickerComponent } from '../../inputs/datepicker/datepicker.component';
 
 @Component({
   selector: 'app-create-task-modal',
@@ -19,7 +21,8 @@ import { IAssignee } from '../../../interface/assignee';
     ModalLayoutComponent,
     ReactiveFormsModule,
     InputComponent,
-    InputSelectComponent
+    InputSelectComponent,
+    DatepickerComponent
   ],
   templateUrl: './create-task-modal.component.html',
   styleUrl: './create-task-modal.component.scss'
@@ -29,20 +32,23 @@ export class CreateTaskModalComponent extends Form implements OnInit {
   private fb = inject(FormBuilder);
   private taskService = inject(TaskService);
   taskPriorities = Object.values(TaskPriority).map(priority => ({ label: priority, value: priority }));
+  taskStatus = Object.values(TaskStatus).map(status => ({ label: status, value: status }));
   private assigneeService = inject(AssigneeService);
   assignees: IAssignee[];
+  today = new Date();
 
   formGroup: FormGroup = this.fb.group({
     title: this.fb.control(null, [Validators.required]),
     description: this.fb.control(null),
     priority: this.fb.control(null),
-    assignees: this.fb.control([])
+    assignees: this.fb.control([]),
+    status: this.fb.control(null),
+    deadline: this.fb.control(null)
   });
 
   ngOnInit(): void {
     this.assigneeService.getAssignees().subscribe((assignees)=> {
       this.assignees = assignees
-      console.log(assignees);
     })
   }
 
