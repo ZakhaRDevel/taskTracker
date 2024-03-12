@@ -1,0 +1,43 @@
+.task {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: var(--light-gray);
+  border-radius: 15px;
+  padding: 30px;
+
+  &__wrapper {
+    .label {
+      font-size: 20px;
+      line-height: 24px;
+    }
+  }
+
+  &__view {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    button {
+      width: max-content;
+    }
+  }
+
+  &__edit {
+    &-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      .wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      button {
+        width: max-content;
+      }
+    }
+  }
+}

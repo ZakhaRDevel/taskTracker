@@ -54,7 +54,6 @@ export class CreateTaskModalComponent extends Form implements OnInit {
 
   prepareRequest(): Observable<ITask> {
     const data = this.formGroup.getRawValue();
-    console.log(data);
     return this.taskService.createTask(data);
   }
 
