@@ -52,7 +52,7 @@ export class TasksComponent implements OnInit {
   }
 
   onStatusFilter(status: { label: string, value: string }) {
-    this.filters.status = status.value;
+    this.filters.status = status?.value;
     this.getList();
   }
 
