@@ -12,6 +12,14 @@ export class TaskService {
 
   private taskListUpdated = new BehaviorSubject<boolean>(false);
 
+  private getTasks(): ITask[] {
+    const tasks = localStorage.getItem('tasks');
+    return tasks ? JSON.parse(tasks) : [];
+  }
+
+  private saveTasks(tasks: ITask[]): void {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }
   notifyTaskListUpdated() {
     this.taskListUpdated.next(true);
   }
@@ -21,14 +29,6 @@ export class TaskService {
   }
   generateId(): string {
     return new Date().getTime().toString();
-  }
-  private getTasks(): ITask[] {
-    const tasks = localStorage.getItem('tasks');
-    return tasks ? JSON.parse(tasks) : [];
-  }
-
-  private saveTasks(tasks: ITask[]): void {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
   }
 
   getAllTasks(): Observable<ITask[]> {
@@ -48,7 +48,7 @@ export class TaskService {
       priority: taskData.priority || TaskPriority.Medium,
       status: TaskStatus.ToDo
     };
-    tasks.push(newTask);
+    tasks.unshift(newTask);
     this.saveTasks(tasks);
     this.notifyTaskListUpdated();
     return of(newTask).pipe(delay(200));
