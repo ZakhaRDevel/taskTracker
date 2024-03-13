@@ -4,12 +4,14 @@
       <span class="label">Название:</span>
       <span>{{ task.title }}</span>
     </div>
-    @if (task.description) {
-      <div class="task__wrapper">
-        <span class="label">Описание:</span>
-        <span>{{ task.description }}</span>
-      </div>
-    }
+    <div class="task__wrapper">
+      <span class="label">Статус:</span>
+      <span>{{ task.status }}</span>
+    </div>
+    <div class="task__wrapper">
+      <span class="label">Приоритет:</span>
+      <span>{{ task.priority }}</span>
+    </div>
     <div class="task__wrapper">
       <span class="label">Исполнители:</span>
       @for (assignee of task.assignees; track assignee) {
@@ -22,5 +24,5 @@
   <button class="delete" (click)="deleteTask(task.id)">
     <app-close-icon [width]="15" [height]="15" />
   </button>
-  <a class="more-link" [routerLink]="'tasks/'+ task.id">Подробнее</a>
+  <a class="_btn" [routerLink]="'tasks/'+ task.id">Подробнее</a>
 </div>

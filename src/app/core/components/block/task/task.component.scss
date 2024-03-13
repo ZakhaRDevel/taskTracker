@@ -14,6 +14,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     flex-direction: column;
+    gap: 15px;
   }
 
   &__wrapper {
@@ -29,16 +30,6 @@
     z-index: 1;
     color: var(--red);
 
-    transition: opacity .3s;
-
-    @media(hover: hover) {
-      &:hover {
-        opacity: .5;
-      }
-    }
-  }
-
-  .more-link {
     transition: opacity .3s;
 
     @media(hover: hover) {
