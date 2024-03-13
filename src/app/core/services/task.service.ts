@@ -4,6 +4,7 @@ import { delay } from 'rxjs/operators';
 import { ITask } from '../interface/task';
 import { TaskPriority } from '../enum/task-priority';
 import { TaskStatus } from '../enum/task-status';
+import { TaskFilter } from '../interface/task-filter';
 
 @Injectable({
   providedIn: 'root'
@@ -31,8 +32,16 @@ export class TaskService {
     return new Date().getTime().toString();
   }
 
-  getAllTasks(): Observable<ITask[]> {
-    return of(this.getTasks()).pipe(delay(200));
+  getAllTasks(filter: TaskFilter): Observable<ITask[]> {
+    let tasks = this.getTasks();
+    if (filter.status) {
+      tasks = tasks.filter(task => task.status === filter.status);
+    }
+    if (filter.assignees) {
+      // @ts-ignore
+      tasks = tasks.filter(task => task.assignees.includes(filter.assignees));
+    }
+    return of(tasks).pipe(delay(200));
   }
 
   getTask(id: string): Observable<ITask | undefined> {

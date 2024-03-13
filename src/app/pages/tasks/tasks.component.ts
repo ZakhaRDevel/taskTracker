@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { TaskComponent } from '../../core/components/block/task/task.component';
 import { TaskService } from '../../core/services/task.service';
 import { merge, of, switchMap } from 'rxjs';
+import { TaskFilter } from '../../core/interface/task-filter';
 
 @Component({
   selector: 'app-tasks',
@@ -18,6 +19,7 @@ export class TasksComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private taskService = inject(TaskService);
   tasks: ITask[];
+  filters = {} as TaskFilter;
 
   ngOnInit(): void {
     this.route.data.subscribe(({ tasks }) => {
@@ -28,13 +30,17 @@ export class TasksComponent implements OnInit {
         if (tasks && tasks.length > 0) {
           return of(tasks);
         }
-        return this.taskService.getAllTasks();
+        return this.taskService.getAllTasks(this.filters);
       })),
       this.taskService.getTaskListUpdateListener().pipe(
-        switchMap(updated => updated ? this.taskService.getAllTasks() : of(this.tasks))
+        switchMap(updated => updated ? this.taskService.getAllTasks(this.filters) : of(this.tasks))
       )
     ).subscribe(tasks => {
       this.tasks = tasks;
     });
+  }
+
+  getList() {
+    this.taskService.getAllTasks(this.filters);
   }
 }

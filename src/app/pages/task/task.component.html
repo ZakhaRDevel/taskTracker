@@ -12,11 +12,14 @@
       </div>
       <div class="task__wrapper">
         <div class="label">Исполнители</div>
+        <div class="assignees">
         @for (assignee of task.assignees; track assignee) {
           <span>{{ assignee }}</span>
         } @empty {
           нет исполнителей
         }
+        </div>
+
       </div>
       <div class="task__wrapper">
         <div class="label">Приоритет</div>
