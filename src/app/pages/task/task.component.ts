@@ -1,5 +1,5 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ITask } from '../../core/interface/task';
 import { Form } from '../../core/abstract/form.abstract';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -22,7 +22,8 @@ import { DatePipe } from '@angular/common';
     InputComponent,
     InputSelectComponent,
     ReactiveFormsModule,
-    DatePipe
+    DatePipe,
+    RouterLink
   ],
   templateUrl: './task.component.html',
   styleUrl: './task.component.scss'

@@ -1,4 +1,5 @@
 <div class="task">
+  <a routerLink="" class="_btn">Назад</a>
   @if (isView) {
     <div class="task__view">
       <div class="task__wrapper">
@@ -29,7 +30,7 @@
         <div class="label">Дедлайн</div>
         <span class="value">{{ task.deadline ? (task.deadline | date) : 'Пока не задан' }}</span>
       </div>
-      <button (click)="isView = false">Редактировать</button>
+      <button (click)="isView = false" class="_btn">Редактировать</button>
     </div>
   } @else {
     <div class="task__edit">
@@ -49,7 +50,7 @@
 
 
         </div>
-        <button type="submit" (click)="submit()">Сохранить</button>
+        <button type="submit" class="_btn" (click)="submit()">Сохранить</button>
       </form>
     </div>
   }
