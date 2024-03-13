@@ -1,0 +1,17 @@
+@import "variables";
+
+._btn {
+  padding: 10px 15px;
+  border-radius: 15px;
+  background-color: var(--black);
+  color: var(--white);
+  width: max-content;
+
+  transition: background-color .3s;
+
+  @media(hover: hover) {
+    &:hover {
+      background-color: var(--dark-gray);
+    }
+  }
+}
