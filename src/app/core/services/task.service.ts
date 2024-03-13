@@ -37,12 +37,18 @@ export class TaskService {
     if (filter.status) {
       tasks = tasks.filter(task => task.status === filter.status);
     }
-    if (filter.assignees) {
-      // @ts-ignore
-      tasks = tasks.filter(task => task.assignees.includes(filter.assignees));
+    if (filter.assignees && filter.assignees.length > 0) {
+      const filterAssigneeIds = filter.assignees.map(assignee => assignee.id);
+      tasks = tasks.filter(task =>
+          task.assignees && task.assignees.some(assignee =>
+            filterAssigneeIds.includes(assignee.id)
+          )
+      );
     }
+
     return of(tasks).pipe(delay(200));
   }
+
 
   getTask(id: string): Observable<ITask | undefined> {
     const task = this.getTasks().find(t => t.id === id);

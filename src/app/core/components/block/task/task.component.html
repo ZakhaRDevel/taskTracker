@@ -15,7 +15,7 @@
     <div class="task__wrapper">
       <span class="label">Исполнители:</span>
       @for (assignee of task.assignees; track assignee) {
-        {{ assignee }}
+        {{ assignee.name }}
       } @empty {
         нет исполнителей
       }

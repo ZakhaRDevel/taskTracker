@@ -8,7 +8,7 @@
         <app-input [control]="control('title')" placeholder="Название" />
         <app-input [type]="'textarea'" [control]="control('description')" placeholder="Описание" />
         <app-datepicker [control]="control('deadline')" placeholder="Дедлайн" [minDate]="today"/>
-        <app-input-select [items]="assignees" [bindLabel]="'name'" [bindValue]="'name'" [control]="control('assignees')"
+        <app-input-select [items]="assignees" [bindLabel]="'name'" [control]="control('assignees')"
                           [multiple]="true" placeholder="Исполнители" />
         <app-input-select [bindLabel]="'label'" [bindValue]="'value'" [items]="taskPriorities"
                           [control]="control('priority')" placeholder="Приоритет" />

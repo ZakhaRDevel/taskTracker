@@ -1,6 +1,19 @@
 <div class="tasks">
   <div class="tasks__filters">
-
+    <app-input-select
+      [items]="taskStatus"
+      [bindLabel]="'label'"
+      [bindValue]="'value'"
+      placeholder="Статус"
+      (selectEvent)="onStatusFilter($event)"
+    />
+    <app-input-select
+      [items]="assignees"
+      [bindLabel]="'name'"
+      [multiple]="true"
+      placeholder="Исполнители"
+      (selectEvent)="onAssigneesFilter($event)"
+    />
   </div>
   <div class="tasks__list">
     @for (task of tasks; track task.id) {

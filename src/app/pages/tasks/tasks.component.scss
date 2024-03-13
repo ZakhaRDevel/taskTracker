@@ -1,4 +1,13 @@
 .tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  &__filters {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
   &__list {
     display: flex;
     flex-direction: column;

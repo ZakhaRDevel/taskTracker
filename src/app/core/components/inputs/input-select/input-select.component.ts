@@ -25,7 +25,7 @@ export class InputSelectComponent extends FormInput {
   @Input() withError: boolean = true;
   @Input() showError: boolean = true;
   @Input() placeholder: string = '';
-  @Input() bindValue: string = 'id';
+  @Input() bindValue: string
   @Input() bindLabel: string = 'title';
   @Input() isInvalid!: boolean;
   @Input() showPlaceholderTop: boolean = false;
