@@ -33,10 +33,15 @@ export class InputSelectComponent extends FormInput {
   @Input({ transform: booleanAttribute }) readonly: boolean = false;
   @Input({ transform: booleanAttribute }) searchable: boolean = false;
   @Output() selectEvent: EventEmitter<any> = new EventEmitter<any>();
+  @Input() clearable: boolean = false;
   search = '';
 
   onSelect($event: any) {
     this.selectEvent.emit($event);
+  }
+
+  onCLear() {
+    this.selectEvent.emit('');
   }
 
   customSearchFn(term: string, item: any) {

@@ -9,7 +9,7 @@
       #select
       [items]="items"
       [searchable]="false"
-      [clearable]="false"
+      [clearable]="clearable"
       [disabled]="disabled"
       [readonly]="readonly"
       dropdownPosition="bottom"
@@ -22,6 +22,7 @@
       [searchFn]="customSearchFn"
       [class.isSearch]="searchable"
       [multiple]="multiple"
+      (clear)="onCLear()"
     >
     </ng-select>
   </app-form-control>
