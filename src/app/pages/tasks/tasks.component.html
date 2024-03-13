@@ -1,22 +1,25 @@
 <div class="tasks">
-  <div class="tasks__filters">
-    <app-input-select
-      [items]="taskStatus"
-      [bindLabel]="'label'"
-      [bindValue]="'value'"
-      placeholder="Статус"
-      (selectEvent)="onStatusFilter($event)"
-      [clearable]="true"
-    />
-    <app-input-select
-      [items]="assignees"
-      [bindLabel]="'name'"
-      [multiple]="true"
-      placeholder="Исполнители"
-      (selectEvent)="onAssigneesFilter($event)"
-      [clearable]="true"
-    />
-  </div>
+  @if(tasks.length) {
+    <div class="tasks__filters">
+      <app-input-select
+        [items]="taskStatus"
+        [bindLabel]="'label'"
+        [bindValue]="'value'"
+        placeholder="Статус"
+        (selectEvent)="onStatusFilter($event)"
+        [clearable]="true"
+      />
+      <app-input-select
+        [items]="assignees"
+        [bindLabel]="'name'"
+        [multiple]="true"
+        placeholder="Исполнители"
+        (selectEvent)="onAssigneesFilter($event)"
+        [clearable]="true"
+      />
+    </div>
+  }
+
   <div class="tasks__list">
     @for (task of tasks; track task.id) {
       <app-task [task]="task" />
